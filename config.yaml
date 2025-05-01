@@ -1,0 +1,17 @@
+program: train.py #你要运行的代码名，里面已经做了以上3中的基本用法步骤
+method: random  # 选择搜索算法，如随机搜索(random)、网格搜索(grid)或贝叶斯优化(bayes)
+metric:
+  name: eval_result['test']['P10']    #定义优化目标
+  goal: maximize  # maximize/minimize代表最大/最小化目标
+parameters:
+  learning_rate: #连续搜索空间写法
+    min: 0.00001
+    max: 0.1
+  learning_rate_g:
+    min: 0.00001
+    max: 0.1
+  batch_size:
+    min: 32
+    max: 512
+  hidden_size:
+    values: [16, 32, 48, 64, 80, 96, 112, 128] #离散搜索空间写法
